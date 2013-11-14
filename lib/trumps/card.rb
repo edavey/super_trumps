@@ -19,4 +19,8 @@ class Card
     puts "awsome battle! you lose/win!"
   end
 
+  def display
+    pp self
+  end
+
 end

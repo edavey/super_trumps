@@ -11,8 +11,12 @@ Feature: Hand gets dealt
       | Batman       | true |    87   |
       | The Joker    |      |    42   |
 
-  Scenario:
+  Scenario: I have half the cards after they've been dealt
     Given the cards have been dealt
     Then I should have 2 cards
+
+  Scenario: I can view my hand
+    Given the cards have been dealt
+    Then I should be able to view my hand
 
 

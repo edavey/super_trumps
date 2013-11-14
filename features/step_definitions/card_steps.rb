@@ -1,5 +1,4 @@
 Given(/^the following cards:$/) do |cards|
-  @game = Game.new
   cards.hashes.each do |card|
     @game.deck << Factory.create(:card, {character: card['character']})
   end

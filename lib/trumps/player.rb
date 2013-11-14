@@ -5,4 +5,8 @@ class Player
     @cards = []
   end
 
+  def view_hand
+    @cards.each {|card| card.display}
+  end
+
 end

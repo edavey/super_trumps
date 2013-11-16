@@ -2,9 +2,11 @@
 # require 'pry'
 require 'pry'
 require 'pry-debugger'
+require 'trumps/util'
 require 'trumps/game'
 require 'trumps/player'
 require 'trumps/card'
+require 'trumps/battle'
 
 
 

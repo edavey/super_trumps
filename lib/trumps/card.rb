@@ -15,10 +15,6 @@ class Card
     @hero            = attrs.fetch(:hero)
   end
 
-  def battles(who, how)
-    puts "awsome battle! you lose/win!"
-  end
-
   def display
     pp self
   end

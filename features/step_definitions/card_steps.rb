@@ -1,11 +1,7 @@
 Given(/^the following cards:$/) do |cards|
   cards.hashes.each do |card|
-    @game.deck << Factory.create(:card, {character: card['character']})
+    @game.deck << Factory.create(:card, Util::symbolise_keys(card))
   end
-end
-
-Given(/^the cards have been dealt$/) do
-  @game.deal_cards
 end
 
 Then(/^I should have (\d+) cards$/) do |quantity|

@@ -1,8 +1,10 @@
 require "#{File.join(File.dirname(__FILE__), '../', '../', 'lib', 'trumps')}"
 
 Before do
-  @game = Game.new
-  @me = @game.player_1
+  @game     = Game.new
+  @player_1 = @game.player_1
+  @player_2 = @game.player_2
+  @me       = @player_1
 end
 
 

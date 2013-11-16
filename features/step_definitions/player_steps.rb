@@ -1,4 +1,13 @@
 module PlayerSH
+
+  def stubs_player_1_current_card_with(card)
+    @me.instance_variable_set(:@current_card, card)
+  end
+
+  def stubs_player_2_current_card_with(card)
+    @player_2.instance_variable_set(:@current_card, card)
+  end
+
 end
 
 World PlayerSH
@@ -18,4 +27,19 @@ Then(/^I should be able to view my hand$/) do
     @me.cards.map(&:description).should     include(card.description)
     @me.cards.map(&:hero).should            include(card.hero)
   end
+end
+
+Given(/^my current card is "(.*?)"$/) do |character|
+  card = @game.find_card(character)
+  stubs_player_1_current_card_with(card)
+end
+
+Given(/^the current card of player 2 is "(.*?)"$/) do |character|
+  card = @game.find_card(character)
+  stubs_player_2_current_card_with(card)
+end
+
+Then(/^I should now have (\d+) cards in my hand$/) do |quantity|
+  pending
+  # @me.cards.size.should eql(quantity.to_i)
 end

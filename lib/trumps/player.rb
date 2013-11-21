@@ -1,8 +1,9 @@
 class Player
-  attr_accessor :cards, :current_card, :game
+  attr_accessor :cards, :current_card, :game, :name
 
-  def initialize
+  def initialize(name)
     @cards = []
+    @name  = name
   end
 
   def view_hand

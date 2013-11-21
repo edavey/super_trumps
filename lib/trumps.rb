@@ -1,16 +1,20 @@
-# require "#{File.dirname(__FILE__)}/helpers"
-# require 'pry'
 require 'pry'
 require 'pry-debugger'
+$LOAD_PATH.push File.expand_path("../", __FILE__)
+
 require 'trumps/util'
 require 'trumps/game'
+require 'trumps/turn'
 require 'trumps/player'
 require 'trumps/card'
 require 'trumps/battle'
 
 
-
-# puts "Top-trumps"
+puts "Super Trumps"
+game = Game.new(player_1_name: 'Fred')
+game.load_cards
+game.deal_cards
+game.play_till_winner_emerges
 
 # cards = [
 #   { character: "Catwoman",

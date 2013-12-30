@@ -1,4 +1,6 @@
 require "#{File.join(File.dirname(__FILE__), '../', '../', 'lib', 'trumps')}"
+require 'cucumber/rspec/doubles'
+require 'rspec/mocks/standalone'
 
 Before do
   @game     = Game.new(player_1_name: 'Jos')

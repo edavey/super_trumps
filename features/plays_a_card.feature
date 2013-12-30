@@ -16,6 +16,6 @@ Feature: I play a card
     And the current card of player 2 is "The Joker"
     And I choose to battle with "agility"
     Then I should win
-    And I should now have 3 cards in my hand
+    # And I should now have 3 cards in my hand
 
 

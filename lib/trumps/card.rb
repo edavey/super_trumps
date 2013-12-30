@@ -15,8 +15,27 @@ class Card
     @hero            = attrs.fetch(:hero)
   end
 
+  def display_attributes
+    attributes.reject{|a| a == :character}.
+      inject({}) do |hash, attribute|
+        hash[attribute] = self.send(attribute)
+        hash
+      end
+  end
+
   def display
-    pp self
+    label      = hero ? 'a hero' : 'an evil villain'
+    header     = "<%= color(%{#{character} (#{label})}, :headline) %>"
+    attributes = display_attributes.map{|k, v| "#{k.to_s.ljust(15)}: #{v}"}
+    ::HL.list([header] + attributes)
+  end
+
+  private
+
+  def attributes
+    self.instance_variables.map do |iv|
+      iv.to_s.sub('@', '').to_sym
+    end
   end
 
 end

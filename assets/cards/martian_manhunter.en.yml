@@ -1,0 +1,10 @@
+---
+:character:     "Martian Manhunter"
+:height:               201
+:intelligence:           6
+:strength:              46
+:speed:                 18
+:agility:               21
+:fighting_skills:       85
+:hero:               true
+:description:     "Crime fighter from Mars."

@@ -45,12 +45,32 @@ class Game
   end
 
   def start
+    HL.say("<%= color('#{self.title}', :headline) %>")
+    HL.say "\n"
     players.each {|player| player.game = self}
   end
 
+  def we_have_a_winner?
+    player_1.cards.none? || player_2.cards.none?
+  end
+
   def play_till_winner_emerges
-    20.times do
-      turns << Turn.new(self)
+    loop do
+      turns << Turn.new(self).tap do |turn|
+                 turn.go
+               end
+      break if we_have_a_winner?
+    end
+    announce_winner
+  end
+
+  private
+
+  def announce_winner
+    if player_1.cards.any?
+      HL.say("<%= color(%{You've won! You have all the cards.}, :headline) %>")
+    else
+      HL.say("<%= color(%{Hard luck: you've lost! You have no more cards...}, :headline) %>")
     end
   end
 end

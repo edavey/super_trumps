@@ -1,32 +1,28 @@
 module PlayerSH
 
   def stubs_player_1_current_card_with(card)
-    @me.instance_variable_set(:@current_card, card)
+    @me.stub(:current_card).and_return(card)
   end
 
   def stubs_player_2_current_card_with(card)
-    @player_2.instance_variable_set(:@current_card, card)
+    @player_2.stub(:current_card).and_return(card)
   end
 
 end
 
 World PlayerSH
 
-Then(/^I should be able to view my hand$/) do
-  displayed_cards = @me.view_hand
-  displayed_cards.size.should eql(@me.cards.size)
-
-  displayed_cards.each do |card|
-    @me.cards.map(&:character).should       include(card.character)
-    @me.cards.map(&:agility).should         include(card.agility)
-    @me.cards.map(&:speed).should           include(card.speed)
-    @me.cards.map(&:strength).should        include(card.strength)
-    @me.cards.map(&:intelligence).should    include(card.intelligence)
-    @me.cards.map(&:height).should          include(card.height)
-    @me.cards.map(&:fighting_skills).should include(card.fighting_skills)
-    @me.cards.map(&:description).should     include(card.description)
-    @me.cards.map(&:hero).should            include(card.hero)
-  end
+Then(/^I should be able to view my current card$/) do
+  displayed_card = @me.view_current_card
+  displayed_card.should  match(/#{@me.current_card.character}/)
+  displayed_card.should  match(/#{@me.current_card.agility}/)
+  displayed_card.should  match(/#{@me.current_card.speed}/)
+  displayed_card.should  match(/#{@me.current_card.strength}/)
+  displayed_card.should  match(/#{@me.current_card.intelligence}/)
+  displayed_card.should  match(/#{@me.current_card.height}/)
+  displayed_card.should  match(/#{@me.current_card.fighting_skills}/)
+  displayed_card.should  match(/#{@me.current_card.description}/)
+  displayed_card.should  match(/#{@me.current_card.hero}/)
 end
 
 Given(/^my current card is "(.*?)"$/) do |character|

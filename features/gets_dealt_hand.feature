@@ -17,6 +17,6 @@ Feature: Hand gets dealt
 
   Scenario: I can view my hand
     Given the cards have been dealt
-    Then I should be able to view my hand
+    Then I should be able to view my current card
 
 

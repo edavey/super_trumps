@@ -1,7 +1,14 @@
 Super Trumps
 ============
 
-Super hero top-trumps.
+Superhero top-trumps.
+
+Installation
+------------
+
+1. Run `bundle install`
+2. Ensure that the super_trumps script is executable, with `chmod +x super_trumps` if necessary
+3. Play the game with `./super_trumps`
 
 Description of the gameplay in term of our code entities
 --------------------------------------------------------
@@ -18,7 +25,7 @@ Each `Card` has:
 
   - a `#character` such as 'Catwoman' or 'Wonder Woman'
 
-  - a number of `attributes` such as `agility` or  `fighting_skills` each of which has a numeric value
+  - a number of `attributes` such as `agility` or  `fighting_skills`, each of which has a numeric value
 
 Each `Player` has:
 
@@ -39,7 +46,7 @@ Overview of code execution
 
 The `game` is the 'main' element of this program. Its lifecycle is:
 
-  1. created with name of the human known as 'player_1'
+  1. created with name of the human known as `player_1`
   2. imports cards
   3. shuffles pack
   4. deals cards

@@ -1,5 +1,7 @@
+#!/usr/bin/env ruby -KU
+
 $LOAD_PATH.push File.expand_path("../", __FILE__)
-require 'trumps'
+require 'lib/trumps'
 
 HL.say "\n"
 HL.say("<%= color('Super Trumps', :headline) %>")

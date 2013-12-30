@@ -5,26 +5,22 @@ class Turn
   attr_accessor :battle
 
   extend Forwardable
-  def_delegator :game, :player_1, :player_1
-  def_delegator :game, :player_2, :player_2
+  def_delegator :game,   :player_1, :player_1
+  def_delegator :game,   :player_2, :player_2
+  def_delegator :game,   :turns,    :turns
+
+  def_delegator :battle, :winner,   :winner
+  def_delegator :battle, :loser,    :loser
 
   def initialize(game)
-    @game       = game
+    @game = game
   end
 
   def challenger
-    return player_1 if game.turns.none?
-    return player_1 if game.turns.last.battle.winner == player_1
+    return player_1 if turns.none?
+    return player_1 if turns.last.winner == player_1
     player_2
   end
-
-  # def defender
-  #   if challenger == player_1
-  #     player_2
-  #   else
-  #     player_1
-  #   end
-  # end
 
   def go
     introduce_turn
@@ -49,7 +45,7 @@ class Turn
 
   def introduce_turn
     HL.say "\n"
-    HL.say "This is turn number: #{game.turns.size + 1}"
+    HL.say "This is turn number: #{turns.size + 1}"
     HL.say "You have #{player_1.cards.size} cards"
     HL.say "\n"
   end
@@ -71,7 +67,7 @@ class Turn
   end
 
   def player_1_won?
-    battle.winner == player_1
+    winner == player_1
   end
 
   def show_player_1_his_card
@@ -107,8 +103,8 @@ class Turn
   end
 
   def give_winner_the_spoils
-    battle.loser.gives_current_card_to(battle.winner)
-    battle.winner.puts_current_card_to_back_of_hand
+    loser.gives_current_card_to(winner)
+    winner.puts_current_card_to_back_of_hand
   end
 
 end
